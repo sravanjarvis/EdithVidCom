@@ -15,7 +15,7 @@ import os, time, asyncio, json
 from bot.localisation import Localisation
 from bot import (
   DOWNLOAD_LOCATION, 
-  AUTH_USERS
+  BANNED_USERS
 )
 from bot.helper_funcs.ffmpeg import (
   convert_video,
@@ -40,7 +40,7 @@ from bot.helper_funcs.utils import(
 async def incoming_start_message_f(bot, update):
     """/start command"""
     user_id = update.from_user.id
-    if user_id in Config.BANNED_USERS:
+    if user_id in BANNED_USERS:
         await update.reply_text("You are B A N N E D")
         return
     # LOGGER.info(update)
