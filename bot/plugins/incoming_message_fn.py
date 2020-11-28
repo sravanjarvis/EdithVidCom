@@ -39,8 +39,9 @@ from bot.helper_funcs.utils import(
         
 async def incoming_start_message_f(bot, update):
     """/start command"""
-    if update.from_user.id not in AUTH_USERS:
-        await update.message.delete()
+    user_id = update.from_user.id
+    if user_id in Config.BANNED_USERS:
+        await update.reply_text("You are B A N N E D")
         return
     # LOGGER.info(update)
     await bot.send_message(
@@ -52,12 +53,6 @@ async def incoming_start_message_f(bot, update):
 async def incoming_compress_message_f(bot, update):
   """/compress command"""
     
-  if update.from_user.id not in AUTH_USERS:
-    try:
-      await update.message.delete()
-    except:
-      pass
-    return
   if update.reply_to_message is None:
     try:
       await bot.send_message(
