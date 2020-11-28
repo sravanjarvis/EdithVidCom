@@ -15,6 +15,13 @@ class Config(object):
             should_prompt=True
         ).split()
     )
+    #
+    AUTH_USERS = set(
+        int(x) for x in get_config(
+            "AUTH_USERS",
+            should_prompt=True
+        ).split()
+    )
     # the download location, where the HTTP Server runs
     DOWNLOAD_LOCATION = get_config("DOWNLOAD_LOCATION", "/app/DOWNLOADS")
     # Telegram maximum file upload size
