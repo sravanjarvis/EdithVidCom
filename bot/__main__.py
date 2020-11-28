@@ -60,7 +60,7 @@ if __name__ == "__main__" :
     # START command
     incoming_start_message_handler = MessageHandler(
         incoming_start_message_f,
-        filters=Filters.command([Command.START]) & Filters.chat(chats=AUTH_USERS)
+        filters=Filters.command([Command.START])
     )
     app.add_handler(incoming_start_message_handler)
     
